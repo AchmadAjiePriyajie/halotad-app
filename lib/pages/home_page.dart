@@ -1,315 +1,261 @@
 import 'package:flutter/material.dart';
-import 'package:halotad/service/user_service.dart';
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
-
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/bg1.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Column(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          SafeArea(
+            child: Container(
+              alignment: Alignment.topLeft,
+              padding: const EdgeInsets.all(20),
+              width: width,
+              height: height * 0.13,
+              decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(45),
+                      bottomRight: Radius.circular(45))),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Assalamualaikum",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
                       ),
-                      gradient: LinearGradient(
-                        colors: [Colors.green, Colors.teal],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                      SizedBox(
+                        height: 5,
                       ),
+                      Text(
+                        "Adi Purnama",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                  Icon(Icons.person),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            child: Text("serch"),
+            alignment: Alignment.topLeft,
+            decoration: BoxDecoration(
+                border: Border.all(width: 0.1),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(117, 144, 140, 140),
+                    spreadRadius: 2,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  )
+                ],
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15)),
+            margin: EdgeInsets.all(15),
+            padding: EdgeInsets.all(10),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Text("a"),
+                      padding: EdgeInsets.all(10),
                     ),
-                    padding: EdgeInsets.fromLTRB(16, 60, 16, 16),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Assalamualaikum',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                    Text("Chat")
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Text("a"),
+                      padding: EdgeInsets.all(10),
+                    ),
+                    Text("Komunitas")
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Text("a"),
+                      padding: EdgeInsets.all(10),
+                    ),
+                    Text("Artikel")
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Text("a"),
+                      padding: EdgeInsets.all(10),
+                    ),
+                    Text("Konsultasi")
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Info Kajian",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  height: 150,
+                  child: ListView.builder(
+                    itemCount: 4,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 120,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: AssetImage(
+                              "images/ustadz3.jpg",
                             ),
-                            Text(
-                              'Adi Purnama',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                            fit: BoxFit.cover,
+                          ),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 0, 0, 0)
+                                .withOpacity(0.5), // Warna border
+                            width: 0.5, // Ketebalan border
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Daftar Ustadz",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  height: 220,
+                  child: ListView.builder(
+                    itemCount: 4,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 150,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                              ),
+                              child: Image.asset(
+                                "images/ustadz.jpg",
+                                fit: BoxFit.cover,
+                                height: 150, // Atur tinggi gambar
+                                width: double
+                                    .infinity, // Gambar memenuhi lebar container
                               ),
                             ),
-                          ],
-                        ),
-                        Spacer(),
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage('images/adi.jpg'),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Search Bar
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            blurRadius: 8,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search.....',
-                          border: InputBorder.none,
-                          icon: Icon(Icons.search, color: Colors.grey),
-                        ),
-                      ),
-                    ),
-                  ),
-                  // Menu Icons
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.green[100],
-                              child: Icon(Icons.chat, color: Colors.green),
-                            ),
-                            SizedBox(height: 5),
-                            Text('Chat', style: TextStyle(color: Colors.grey)),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.green[100],
-                              child: Icon(Icons.people, color: Colors.green),
-                            ),
-                            SizedBox(height: 5),
-                            Text('Komunitas',
-                                style: TextStyle(color: Colors.grey)),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.green[100],
-                              child: Icon(Icons.article, color: Colors.green),
-                            ),
-                            SizedBox(height: 5),
-                            Text('Artikel',
-                                style: TextStyle(color: Colors.grey)),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.green[100],
-                              child: Icon(Icons.help, color: Colors.green),
-                            ),
-                            SizedBox(height: 5),
-                            Text('Konsultasi',
-                                style: TextStyle(color: Colors.grey)),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Info Kajian Section
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Info Kajian',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          height: 150,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              KajianCard('images/ustadz.jpg'),
-                              KajianCard('images/ustadz.jpg'),
-                              KajianCard('images/ustadz.jpg'),
-                              KajianCard('images/ustadz.jpg'),
-                              KajianCard('images/ustadz.jpg'),
-                              KajianCard('images/ustadz.jpg'),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Ustadz Populer Section
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                            SizedBox(height: 15),
                             Text(
-                              'Ustadz Populer',
+                              "Hanan Attaki",
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
-                              'See all',
-                              style: TextStyle(color: Colors.blue),
+                              "Tafsir Al-Qur'an",
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          height: height * 0.27,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              UstadzCard(
-                                image: 'images/ustadz.jpg',
-                                name: 'Ustadz Abdul Somad',
-                                topic: 'Ilmu Hadis & Fikih',
-                              ),
-                              UstadzCard(
-                                image: 'images/ustadz.jpg',
-                                name: 'Ustadz Hanan Attaki',
-                                topic: 'Tafsir Al-Quran',
-                              ),
-                              UstadzCard(
-                                image: 'images/ustadz.jpg',
-                                name: 'Ustadz Hanan Attaki',
-                                topic: 'Tafsir Al-Quran',
-                              ),
-                              UstadzCard(
-                                image: 'images/ustadz.jpg',
-                                name: 'Ustadz Hanan Attaki',
-                                topic: 'Tafsir Al-Quran',
-                              ),
-                            ],
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 252, 252, 252),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 0, 0, 0)
+                                .withOpacity(0.5), // Warna border
+                            width: 0.5, // Ketebalan border
                           ),
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
-      // Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: '',
+            label: "Home", // Teks deskriptif
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: '',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// Widget untuk card Kajian
-class KajianCard extends StatelessWidget {
-  final String image;
-  KajianCard(this.image);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 10),
-      width: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-          image: AssetImage(image),
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
-
-// Widget untuk card Ustadz
-class UstadzCard extends StatelessWidget {
-  final String image;
-  final String name;
-  final String topic;
-
-  UstadzCard({required this.image, required this.name, required this.topic});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10))),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(image, height: 150, fit: BoxFit.cover),
-          ),
-          SizedBox(height: 5),
-          Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-          Text(topic, style: TextStyle(color: Colors.grey)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(5, (index) {
-              return Icon(Icons.star,
-                  size: 15, color: index < 4 ? Colors.yellow : Colors.grey);
-            }),
+            icon: Icon(Icons.settings),
+            label: "Settings", // Teks deskriptif
           ),
         ],
       ),
