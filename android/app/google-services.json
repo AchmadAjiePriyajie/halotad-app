@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "69438056185",
+    "project_id": "hallotad-e728c",
+    "storage_bucket": "hallotad-e728c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69438056185:android:6bb7493e7aac49a6f96428",
+        "android_client_info": {
+          "package_name": "com.halotad.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAchA3Hs7s1WkH87yzw0Y2BrdmFSqhgV1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
