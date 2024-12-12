@@ -78,4 +78,20 @@ class UserService {
   Future<void> logout() async {
     await firebaseAuth.signOut();
   }
+
+  Future<List<AppUser>> getAllUsers() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await firebaseFirestore.collection('users').get();
+
+      // Mapping hasil query ke list AppUser
+      List<AppUser> userList = querySnapshot.docs.map((doc) {
+        return AppUser.fromMap(doc.data() as Map<String, dynamic>);
+      }).toList();
+
+      return userList;
+    } catch (e) {
+      throw Exception('Failed to load users: $e');
+    }
+  }
 }

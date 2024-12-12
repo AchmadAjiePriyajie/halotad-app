@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:halotad/pages/auth_pages/auth.dart';
+import 'package:halotad/service/user_service.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    UserService userService = UserService();
     return Scaffold(
       body: Stack(
         children: [
@@ -100,15 +103,22 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                         child: Center(
-                          child: Text("Konfirmasi",
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white)),
+                          child: Text(
+                            "Konfirmasi",
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
                         ),
                       ),
                       SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: () {
-                          // Aksi saat tombol Keluar ditekan
+                          userService.logout();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AuthPage(),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
@@ -118,9 +128,13 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                         child: Center(
-                          child: Text("Keluar",
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white)),
+                          child: Text(
+                            "Keluar",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ],
